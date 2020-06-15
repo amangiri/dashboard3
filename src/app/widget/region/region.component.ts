@@ -10,11 +10,12 @@ import HC_exporting from 'highcharts/modules/exporting';
 export class RegionComponent implements OnInit {
   Highcharts = Highcharts;
   chartOptions: any = {};
-  // @Input() profitData;
+  @Input() region;
   // @Input() subCategory;
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.region)
     this.chartData();
   }
 
@@ -73,23 +74,23 @@ export class RegionComponent implements OnInit {
 
       series: [
         {
-          name: 'Central',
-          data: [3.7],
+          name: this.region[2].regionName,
+          data: [this.region[2].matric],
           color: 'blue'
         },
         {
-          name: 'East',
-          data: [6.31],
+          name: this.region[3].regionName,
+          data: [this.region[3].matric],
           color: 'orange'
         },
         {
-          name: 'South',
-          data: [9.31],
+          name: this.region[0].regionName,
+          data: [this.region[0].matric],
           color: 'red'
         },
         {
-          name: 'West',
-          data: [5.31],
+          name: this.region[1].regionName,
+          data: [this.region[1].matric],
           color: '#3188d4'
         }
       ],
@@ -110,9 +111,9 @@ export class RegionComponent implements OnInit {
     // console.log(changes)
     // this.profitData= changes.profitData.currentValue;
     // this.subCategory= changes.subCategory.currentValue;
-    if(changes.profitData.firstChange=true){
-    this.chartData();
-    }
+    // if(changes.profitData.firstChange=true){
+    // this.chartData();
+    // }
   }
 
 }

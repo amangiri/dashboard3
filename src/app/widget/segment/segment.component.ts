@@ -13,9 +13,11 @@ am4core.useTheme(am4themes_animated);
   styleUrls: ['./segment.component.scss']
 })
 export class SegmentComponent implements OnInit {
+  @Input() segment;
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.segment)
   }
 
   ngAfterViewInit() {
@@ -88,31 +90,25 @@ export class SegmentComponent implements OnInit {
 
     chart.data = [
       {
-        "title": "Corporate",
-        "id": "AF",
-        "color": "#eea638",
-        "continent": "asia",
-        "x": 2000,
-        "y": 70,
-        "value": 105
+        "title": this.segment[1].segmentName,
+        "color": "orange",
+        "x": 2,
+        "y": 7,
+        "value": this.segment[1].matric
       },
       {
-        "title": "Consumer",
-        "id": "AL",
-        "color": "#d8854f",
-        "continent": "europe",
-        "x": 4000,
-        "y": 70,
-        "value": 105
+        "title": this.segment[0].segmentName,
+        "color": "blue",
+        "x": 4,
+        "y": 7,
+        "value": this.segment[0].matric
       },
       {
-        "title": "Home Office",
-        "id": "DZ",
-        "color": "#de4c4f",
-        "continent": "africa",
-        "x": 6000,
-        "y": 70,
-        "value": 105
+        "title": this.segment[2].segmentName,
+        "color": "green",
+        "x": 6,
+        "y": 7,
+        "value": this.segment[2].matric
       }
     ];
   }

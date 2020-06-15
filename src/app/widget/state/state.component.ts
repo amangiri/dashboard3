@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4maps from "@amcharts/amcharts4/maps";
 import am4geodata_usaLow from "@amcharts/amcharts4-geodata/usaLow";
@@ -13,6 +13,7 @@ am4core.useTheme(am4themes_animated);
 })
 export class StateComponent implements OnInit {
 
+  @Input() state;
   constructor() { }
 
   ngOnInit(): void {
@@ -21,7 +22,7 @@ export class StateComponent implements OnInit {
   }
 
   chart() {
-    console.log("state")
+    console.log(this.state)
     // Create map instance
 let chart = am4core.create("chartdiv", am4maps.MapChart);
 
@@ -34,12 +35,13 @@ chart.projection = new am4maps.projections.AlbersUsa();
 // Create map polygon series
 let polygonSeries = chart.series.push(new am4maps.MapPolygonSeries());
 
+console.log(chart.colors)
 //Set min/max fill color for each area
 polygonSeries.heatRules.push({
   property: "fill",
   target: polygonSeries.mapPolygons.template,
-  min: chart.colors.getIndex(1).brighten(1),
-  max: chart.colors.getIndex(1).brighten(-0.3)
+  min: am4core.color("red").brighten(1),
+  max: am4core.color("green").brighten(-0.3)
 });
 
 // Make map load polygon data (state shapes and names) from GeoJSON
@@ -53,7 +55,7 @@ polygonSeries.data = [
   },
   {
     id: "US-AK",
-    value: 626932
+    value: 626932,
   },
   {
     id: "US-AZ",

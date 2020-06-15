@@ -14,10 +14,10 @@
         </div>
         <div class="card col-md-4">
            <div class="card row" style="height: 50%;">
-                <app-segment></app-segment>
+                <app-segment *ngIf="segment.length>0" [segment]="segment"></app-segment>
            </div>
            <div class="card row" style="height: 50%;">
-            <app-state></app-state>
+            <app-state *ngIf="state.length>0" [state]="state"></app-state>
            </div>
         </div>
         <div class="card col-md-4">
@@ -25,7 +25,7 @@
                 <app-category></app-category>
            </div>
            <div class="card row" style="height: 50%; width: 750px;">
-            <app-region></app-region>
+            <app-region *ngIf="region.length>1" [region]="region"></app-region>
            </div>
         </div>
         <div class="card col-md-2" style="height: 235px;">

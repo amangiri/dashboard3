@@ -7,7 +7,9 @@ import { DashboardService } from 'src/app/dashboard.service';
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent implements OnInit {
-
+  segment=[];
+  region=[];
+  state=[];
   constructor(private dashboardService: DashboardService) { }
 
   ngOnInit(): void {
@@ -15,8 +17,11 @@ export class LayoutComponent implements OnInit {
   }
 
   findBySegemnt(){
-    this.dashboardService.findBySegment('sales').subscribe(data=>{
+    this.dashboardService.findBySegment('sales').subscribe((data:any)=>{
       console.log(data)
+      this.segment= data.customerSegments;
+      this.region= data.regions;
+      this.state=data.states;
     })
   }
 

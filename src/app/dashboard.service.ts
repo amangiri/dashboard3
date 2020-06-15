@@ -15,7 +15,7 @@ export class DashboardService {
     console.log(routeData)
     let url = environment.url + 'segmentStateRegion';
     let searchParams= new HttpParams();
-    searchParams = searchParams.append('selection',routeData)
+    searchParams = searchParams.append('selection','discount')
     console.log(url)
    return this.http.get<any>(url,{params:searchParams}).pipe(
       catchError(this.handleError)
