@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+.text{
+    text-align: center;
+    color: #333333;
+    font-size: 18px;
+    fill: #333333
+}

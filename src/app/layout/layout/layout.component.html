@@ -1,0 +1,80 @@
+<!-- <div class="container-fluid">
+    <div class="row">
+        <div class="border col-md-2"><app-supplier></app-supplier></div>
+        <div class="border col-md-4"><app-segment></app-segment></div>
+        <div class="border col-md-4"><app-category></app-category></div>
+        <div class="border col-md-2">dshd</div>
+        
+    </div>
+</div> -->
+
+    <div class="row">
+        <div class="card col-md-2">
+           <app-supplier></app-supplier>
+        </div>
+        <div class="card col-md-4">
+           <div class="card row" style="height: 50%;">
+                <app-segment></app-segment>
+           </div>
+           <div class="card row" style="height: 50%;">
+            <app-state></app-state>
+           </div>
+        </div>
+        <div class="card col-md-4">
+           <div class="card row" style="height: 50%;">
+                <app-category></app-category>
+           </div>
+           <div class="card row" style="height: 50%; width: 750px;">
+            <app-region></app-region>
+           </div>
+        </div>
+        <div class="card col-md-2" style="height: 235px;">
+            <h5>Metric Selection</h5>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                <label class="form-check-label" for="exampleRadios1">
+                  Discount
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                <label class="form-check-label" for="exampleRadios2">
+                  Order Quantity
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                <label class="form-check-label" for="exampleRadios2">
+                  Product Based Margin
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                <label class="form-check-label" for="exampleRadios2">
+                  Profit
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                <label class="form-check-label" for="exampleRadios2">
+                  Sales
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                <label class="form-check-label" for="exampleRadios2">
+                  Shipping Cost
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                <label class="form-check-label" for="exampleRadios2">
+                  Unit Price
+                </label>
+              </div>
+        </div>
+    </div>
+
+    <div class="card row">
+      <app-month></app-month>
+    </div>
