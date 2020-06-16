@@ -11,11 +11,22 @@ export class DashboardService {
 
   constructor(private http: HttpClient) { }
 
-  findBySegment(routeData): Observable<any> {
-    console.log(routeData)
+  findBySegment(metric): Observable<any> {
+    console.log(metric)
     let url = environment.url + 'segmentStateRegion';
     let searchParams= new HttpParams();
-    searchParams = searchParams.append('selection','discount')
+    searchParams = searchParams.append('selection',metric)
+    console.log(url)
+   return this.http.get<any>(url,{params:searchParams}).pipe(
+      catchError(this.handleError)
+    )
+  }
+
+  departmentCategory(metric): Observable<any> {
+    console.log(metric)
+    let url = environment.url + 'departmentCategory';
+    let searchParams= new HttpParams();
+    searchParams = searchParams.append('selection',metric)
     console.log(url)
    return this.http.get<any>(url,{params:searchParams}).pipe(
       catchError(this.handleError)

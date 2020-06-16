@@ -14,10 +14,13 @@ am4core.useTheme(am4themes_animated);
 })
 export class SegmentComponent implements OnInit {
   @Input() segment;
-  constructor() { }
+  matric;
+  constructor() { 
+    this.matric= localStorage.getItem("matric");
+  }
 
   ngOnInit(): void {
-    console.log(this.segment)
+    // console.log(this.segment)
   }
 
   ngAfterViewInit() {

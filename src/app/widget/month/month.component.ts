@@ -70,12 +70,13 @@ export class MonthComponent implements OnInit {
           shared: true
       },
       legend: {
+          enabled:false,
           layout: 'horizontal',
-          align: 'left',
-          x: 120,
-          verticalAlign: 'top',
-          y: 100,
-          floating: true,
+        //   align: 'left',
+        //   x: 120,
+        //   verticalAlign: 'top',
+        //   y: 100,
+          floating: false,
           backgroundColor:
               Highcharts.defaultOptions.legend.backgroundColor || // theme
               'rgba(255,255,255,0.25)'

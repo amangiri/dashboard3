@@ -6,8 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./supplier.component.scss']
 })
 export class SupplierComponent implements OnInit {
-
-  constructor() { }
+  matric
+  constructor() {
+    this.matric= localStorage.getItem("matric");
+   }
 
   ngOnInit(): void {
   }

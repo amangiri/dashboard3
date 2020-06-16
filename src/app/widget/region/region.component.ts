@@ -15,7 +15,7 @@ export class RegionComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.region)
+    // console.log(this.region)
     this.chartData();
   }
 
@@ -49,7 +49,7 @@ export class RegionComponent implements OnInit {
         pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:,.2f}<br/>'
       },
       title: {
-        text: '<h5>Discount by Region</h5>'
+        text: localStorage.getItem("matric")+' Discount by Region'
       },
       subtitle: {
         // text: 'Region'
@@ -91,7 +91,7 @@ export class RegionComponent implements OnInit {
         {
           name: this.region[1].regionName,
           data: [this.region[1].matric],
-          color: '#3188d4'
+          color: '#c01fed'
         }
       ],
 
