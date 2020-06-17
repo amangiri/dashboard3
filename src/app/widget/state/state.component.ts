@@ -44,7 +44,9 @@ export class StateComponent implements OnInit {
       property: "fill",
       target: polygonSeries.mapPolygons.template,
       min: am4core.color("red").brighten(1),
-      max: am4core.color("green").brighten(-0.3)
+      max: am4core.color("green").brighten(-0.3),
+      minValue:0,
+      maxValue:1
     });
 
     // Make map load polygon data (state shapes and names) from GeoJSON
