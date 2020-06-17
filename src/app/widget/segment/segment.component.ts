@@ -15,8 +15,8 @@ am4core.useTheme(am4themes_animated);
 export class SegmentComponent implements OnInit {
   @Input() segment;
   matric;
-  constructor() { 
-    this.matric= localStorage.getItem("matric");
+  constructor() {
+    this.matric = localStorage.getItem("matric");
   }
 
   ngOnInit(): void {
@@ -29,10 +29,13 @@ export class SegmentComponent implements OnInit {
     let valueAxisX = chart.xAxes.push(new am4charts.ValueAxis());
     valueAxisX.renderer.ticks.template.disabled = true;
     valueAxisX.renderer.axisFills.template.disabled = true;
-
+    // valueAxisX.disabled=true
+    valueAxisX.opacity = 0;
     let valueAxisY = chart.yAxes.push(new am4charts.ValueAxis());
     valueAxisY.renderer.ticks.template.disabled = true;
     valueAxisY.renderer.axisFills.template.disabled = true;
+    // valueAxisY.disabled=true
+    valueAxisY.opacity = 0;
 
     let series = chart.series.push(new am4charts.LineSeries());
     series.dataFields.valueX = "x";
@@ -46,11 +49,12 @@ export class SegmentComponent implements OnInit {
     bullet.fill = am4core.color("#ff0000");
     bullet.propertyFields.fill = "color";
     bullet.strokeOpacity = 0;
-    bullet.strokeWidth = 2;
+    bullet.strokeWidth = 0;
     bullet.fillOpacity = 0.5;
     bullet.stroke = am4core.color("#ffffff");
     bullet.hiddenState.properties.opacity = 0;
     bullet.tooltipText = "[bold]Customer Segment: {title}[/]\nMetric: {value.value}";
+
 
     let outline = chart.plotContainer.createChild(am4core.Circle);
     outline.fillOpacity = 0;
@@ -78,7 +82,7 @@ export class SegmentComponent implements OnInit {
     hoverState.properties.fillOpacity = 1;
     hoverState.properties.strokeOpacity = 1;
 
-    series.heatRules.push({ target: bullet, min: 2, max: 60, property: "radius" });
+    series.heatRules.push({ target: bullet, min: 30, max: 50, property: "radius" });
 
     bullet.adapter.add("tooltipY", function (tooltipY, target) {
       return -target.radius;

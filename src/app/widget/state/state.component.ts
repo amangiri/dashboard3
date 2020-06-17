@@ -29,6 +29,7 @@ export class StateComponent implements OnInit {
     // Create map instance
     let chart = am4core.create("chartdiv", am4maps.MapChart);
 
+    
     // Set map definition
     chart.geodata = am4geodata_usaLow;
 

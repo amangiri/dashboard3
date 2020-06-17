@@ -11,12 +11,19 @@ export class RegionComponent implements OnInit {
   Highcharts = Highcharts;
   chartOptions: any = {};
   @Input() region;
+  catString='';
   // @Input() subCategory;
   constructor() { }
 
   ngOnInit(): void {
-    // console.log(this.region)
-    this.chartData();
+    console.log(this.region)
+    this.region.forEach(element => {
+      // console.log(element)
+      this.catString= this.catString+'<br>'+element.name
+    });
+    console.log(this.catString)
+      this.chartData();
+    
   }
 
   chartData() {
@@ -55,7 +62,7 @@ export class RegionComponent implements OnInit {
         // text: 'Region'
     },
       xAxis: {
-        categories: ['<br>Central<br>East<br>South<br>West'],
+        categories: [this.catString],
           
         allowDecimals: false,
         title: {
@@ -74,23 +81,23 @@ export class RegionComponent implements OnInit {
 
       series: [
         {
-          name: this.region[2].regionName,
-          data: [this.region[2].matric],
+          name: this.region[0].name,
+          data: [this.region[0].data],
           color: 'blue'
         },
         {
-          name: this.region[3].regionName,
-          data: [this.region[3].matric],
+          name: this.region[1].name,
+          data: [this.region[1].data],
           color: 'orange'
         },
         {
-          name: this.region[0].regionName,
-          data: [this.region[0].matric],
+          name: this.region[2].name,
+          data: [this.region[2].data],
           color: 'red'
         },
         {
-          name: this.region[1].regionName,
-          data: [this.region[1].matric],
+          name: this.region[3].name,
+          data: [this.region[3].data],
           color: '#c01fed'
         }
       ],
