@@ -101,14 +101,4 @@ export class CategoryComponent implements OnInit {
 
   }
 
-
-  ngOnChanges(changes: SimpleChanges) {
-    // console.log(changes)
-    // this.profitData= changes.profitData.currentValue;
-    // this.subCategory= changes.subCategory.currentValue;
-    // if(changes.profitData.firstChange=true){
-    // this.chartData();
-    // }
-  }
-
 }
