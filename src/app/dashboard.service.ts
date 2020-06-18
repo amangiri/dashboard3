@@ -33,6 +33,17 @@ export class DashboardService {
     )
   }
 
+  findByCustomers(metric): Observable<any> {
+    console.log(metric)
+    let url = environment.url + 'cities';
+    let searchParams= new HttpParams();
+    searchParams = searchParams.append('selection',metric)
+    console.log(url)
+   return this.http.get<any>(url,{params:searchParams}).pipe(
+      catchError(this.handleError)
+    )
+  }
+
   handleError(errorObj: HttpErrorResponse) {
     console.log(errorObj);
     return throwError(errorObj.message)

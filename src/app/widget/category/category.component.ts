@@ -30,6 +30,9 @@ export class CategoryComponent implements OnInit {
       },
       xAxis: {
         type: 'category',
+        title:{
+          // text:'dsda'
+        },
         labels: {
           rotation: -90,
           // style: {

@@ -12,6 +12,7 @@ export class LayoutComponent implements OnInit {
   region = [];
   state = [];
   departmentCat = [];
+  cityList=[];
   metric = 'discount';
   constructor(
     private dashboardService: DashboardService,
@@ -26,6 +27,7 @@ export class LayoutComponent implements OnInit {
   findBySegemnt(matric) {
     this.findMatric(matric);
     this.departmentCategory(matric);
+    this.findByCustomers(matric);
     this.spinner.show();
     this.segment = [];
     this.region = [];
@@ -44,7 +46,15 @@ export class LayoutComponent implements OnInit {
     this.dashboardService.departmentCategory(matric).subscribe((data: any) => {
       // console.log(data)
       this.departmentCat = data.subCategories;
-      console.log(this.departmentCat)
+      // console.log(this.departmentCat)
+    })
+  }
+
+  findByCustomers(matric){
+    this.cityList=[];
+    this.dashboardService.findByCustomers(matric).subscribe((data:any)=>{
+      // console.log(data)
+      this.cityList=data;
     })
   }
 

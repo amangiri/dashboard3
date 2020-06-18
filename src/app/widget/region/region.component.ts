@@ -16,7 +16,7 @@ export class RegionComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.region)
+    // console.log(this.region)
     this.region.forEach(element => {
       // console.log(element)
       this.catString= this.catString+'<br>'+element.name
