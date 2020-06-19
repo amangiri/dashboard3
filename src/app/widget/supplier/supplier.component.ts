@@ -15,7 +15,7 @@ export class SupplierComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    console.log(this.cityList)
+    // console.log(this.cityList)
   }
 
 }

@@ -16,12 +16,12 @@ export class RegionComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.region)
+    // console.log(this.region)
     this.region.forEach(element => {
       // console.log(element)
       this.catString= this.catString+'<br>'+element.name
     });
-    console.log(this.catString)
+    // console.log(this.catString)
       this.chartData();
     
   }
@@ -53,7 +53,7 @@ export class RegionComponent implements OnInit {
       },
       tooltip: {
         headerFormat: '<span style="font-size:11px">{point.name}</span><br>',
-        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:,.2f}<br/>'
+        pointFormat: '<span style="color:{point.color}">Matric</span>: <b>{point.y:,.2f}<br/>'
       },
       title: {
         text: localStorage.getItem("matric")+' Discount by Region'

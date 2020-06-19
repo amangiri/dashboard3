@@ -45,7 +45,7 @@ export class LayoutComponent implements OnInit {
     this.departmentCat = [];
     this.dashboardService.departmentCategory(matric).subscribe((data: any) => {
       // console.log(data)
-      this.departmentCat = data.subCategories;
+      this.departmentCat.push(data);
       // console.log(this.departmentCat)
     })
   }
