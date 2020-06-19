@@ -35,7 +35,7 @@ export class DashboardService {
 
   findByCustomers(metric): Observable<any> {
     console.log(metric)
-    let url = environment.url + 'cities';
+    let url = environment.url + 'suppliers';
     let searchParams= new HttpParams();
     searchParams = searchParams.append('selection',metric)
     console.log(url)
@@ -43,6 +43,17 @@ export class DashboardService {
       catchError(this.handleError)
     )
   }
+
+  // departmentCategory(metric): Observable<any> {
+  //   console.log(metric)
+  //   let url = environment.url + 'suppliers';
+  //   let searchParams= new HttpParams();
+  //   searchParams = searchParams.append('selection',metric)
+  //   console.log(url)
+  //  return this.http.get<any>(url,{params:searchParams}).pipe(
+  //     catchError(this.handleError)
+  //   )
+  // }
 
   handleError(errorObj: HttpErrorResponse) {
     console.log(errorObj);

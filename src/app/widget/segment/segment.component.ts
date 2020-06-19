@@ -15,6 +15,8 @@ am4core.useTheme(am4themes_animated);
 export class SegmentComponent implements OnInit {
   @Input() segment;
   matric;
+  minHeatRule = 50;
+  maxHeatRule = 70;
   constructor() {
     this.matric = localStorage.getItem("matric");
   }
@@ -25,73 +27,210 @@ export class SegmentComponent implements OnInit {
 
   ngAfterViewInit() {
     let chart = am4core.create("chartdivv", am4charts.XYChart);
-  //label for Corporate Text
+    let consumerTextfont;
+    let consumerTextX;
+    let consumerTextY;
+    let consumerMatricfont;
+    let consumerMatricX;
+    let consumerMatricY;
+    let corporateTextfont;
+    let corporateTextX;
+    let corporateTextY;
+    let corporateMatricfont;
+    let corporateMatricX;
+    let corporateMatricY;
+    let homeTextfont;
+    let homeTextX;
+    let homeTextY;
+    let homeMatricfont;
+    let homeMatricX;
+    let homeMatricY;
+    if (localStorage.getItem('matric') === 'Discount') {
+      this.minHeatRule = 40;
+      this.maxHeatRule = 50;
+      corporateTextfont=13;
+      corporateTextX=78;
+      corporateTextY=65;
+      corporateMatricfont=18;
+      corporateMatricX=90;
+      corporateMatricY=80;
+      consumerTextfont=12;
+      consumerTextX=225;
+      consumerTextY=65;
+      consumerMatricfont=18;
+      consumerMatricX=235;
+      consumerMatricY=80;
+      homeTextfont=11;
+      homeTextX=385;
+      homeTextY=70;
+      homeMatricfont=16;
+      homeMatricX=400;
+      homeMatricY=80;
+    }
+    else if (localStorage.getItem('matric') === 'Order Quantity') {
+      this.minHeatRule = 40;
+      this.maxHeatRule = 60;
+      corporateTextfont=15;
+      corporateTextX=75;
+      corporateTextY=65;
+      corporateMatricfont=18;
+      corporateMatricX=85;
+      corporateMatricY=80;
+      consumerTextfont=15;
+      consumerTextX=225;
+      consumerTextY=65;
+      consumerMatricfont=18;
+      consumerMatricX=235;
+      consumerMatricY=80;
+      homeTextfont=12;
+      homeTextX=380;
+      homeTextY=70;
+      homeMatricfont=16;
+      homeMatricX=395;
+      homeMatricY=82;
+    }
+    else if (localStorage.getItem('matric') === 'Product Based Margin') {
+      this.minHeatRule = 40;
+      this.maxHeatRule = 70;
+      corporateTextfont=17;
+      corporateTextX=70;
+      corporateTextY=65;
+      corporateMatricfont=17;
+      corporateMatricX=87;
+      corporateMatricY=82;
+      consumerTextfont=17;
+      consumerTextX=215;
+      consumerTextY=65;
+      consumerMatricfont=17;
+      consumerMatricX=230;
+      consumerMatricY=82;
+      homeTextfont=12;
+      homeTextX=377;
+      homeTextY=70;
+      homeMatricfont=16;
+      homeMatricX=390;
+      homeMatricY=82;
+    }
+    else if (localStorage.getItem('matric') === 'Profit') {
+      this.minHeatRule = 45;
+      this.maxHeatRule = 70;
+      corporateTextfont=17;
+      corporateTextX=70;
+      corporateTextY=65;
+      corporateMatricfont=17;
+      corporateMatricX=85;
+      corporateMatricY=82;
+      consumerTextfont=17;
+      consumerTextX=215;
+      consumerTextY=65;
+      consumerMatricfont=17;
+      consumerMatricX=225;
+      consumerMatricY=82;
+      homeTextfont=14;
+      homeTextX=375;
+      homeTextY=70;
+      homeMatricfont=16;
+      homeMatricX=390;
+      homeMatricY=82;
+    }
+    else if (localStorage.getItem('matric') === 'Sales') {
+      this.minHeatRule = 55;
+      this.maxHeatRule = 80;
+      corporateTextfont=17;
+      corporateTextX=70;
+      corporateTextY=65;
+      corporateMatricfont=17;
+      corporateMatricX=85;
+      corporateMatricY=82;
+      consumerTextfont=17;
+      consumerTextX=215;
+      consumerTextY=65;
+      consumerMatricfont=17;
+      consumerMatricX=220;
+      consumerMatricY=82;
+      homeTextfont=14;
+      homeTextX=375;
+      homeTextY=70;
+      homeMatricfont=16;
+      homeMatricX=390;
+      homeMatricY=82;
+    }
+    else if (localStorage.getItem('matric') === 'Price') {
+      this.minHeatRule = 50;
+      this.maxHeatRule = 75;
+      corporateTextfont=17;
+      corporateTextX=70;
+      corporateTextY=65;
+      corporateMatricfont=17;
+      corporateMatricX=87;
+      corporateMatricY=82;
+      consumerTextfont=17;
+      consumerTextX=215;
+      consumerTextY=65;
+      consumerMatricfont=17;
+      consumerMatricX=230;
+      consumerMatricY=82;
+      homeTextfont=14;
+      homeTextX=375;
+      homeTextY=70;
+      homeMatricfont=16;
+      homeMatricX=390;
+      homeMatricY=82;
+    }
+
+
+    //label for Corporate Text
     let labelCr = chart.createChild(am4core.Label);
     labelCr.text = "Corporate";
-    labelCr.fontSize = 15;
+    labelCr.fontSize = corporateTextfont;
     labelCr.align = "center";
     labelCr.isMeasured = false;
-    labelCr.x = 70;
-    labelCr.y = 55;
-  //label for Corporate Matric
+    labelCr.x = corporateTextX;
+    labelCr.y = corporateTextY;
+    //label for Corporate Matric
     let labelCrMa = chart.createChild(am4core.Label);
     labelCrMa.text = this.segment[1].matric.toString().split('.')[0];
-    labelCrMa.fontSize = 20;
+    labelCrMa.fontSize = corporateMatricfont;
     labelCrMa.align = "center";
     labelCrMa.isMeasured = false;
-    if(this.segment[1].matric.toString().split('.')[0].length ===3){
-    labelCrMa.x = 80;
-    labelCrMa.y = 75;
-    }else{
-      labelCrMa.x = 80;
-    labelCrMa.y = 75;
-    }
+    labelCrMa.x = corporateMatricX;
+    labelCrMa.y = corporateMatricY;
 
     //label for Consumer Text
     let labelCn = chart.createChild(am4core.Label);
     labelCn.text = "Consumer";
-    labelCn.fontSize = 15;
+    labelCn.fontSize = consumerTextfont;
     labelCn.align = "center";
     labelCn.isMeasured = false;
-    labelCn.x = 220;
-    labelCn.y = 55;
+    labelCn.x = consumerTextX;
+    labelCn.y = consumerTextY;
 
     //label for Consumer Matric
     let labelCnMa = chart.createChild(am4core.Label);
     labelCnMa.text = this.segment[0].matric.toString().split('.')[0];
-    labelCnMa.fontSize = 20;
+    labelCnMa.fontSize = consumerMatricfont;
     labelCnMa.align = "center";
     labelCnMa.isMeasured = false;
-    if(this.segment[0].matric.toString().split('.')[0].length ===3){
-      labelCnMa.x = 230;
-      labelCnMa.y = 75;
-    }else{
-    labelCnMa.x = 220;
-    labelCnMa.y = 75;
-    }
+    labelCnMa.x = consumerMatricX;
+    labelCnMa.y = consumerMatricY;
 
     //label for Home Office Text
     let labelHo = chart.createChild(am4core.Label);
     labelHo.text = "Home Office";
-    labelHo.fontSize = 15;
+    labelHo.fontSize = homeTextfont;
     labelHo.align = "center";
     labelHo.isMeasured = false;
-    labelHo.x = 370;
-    labelHo.y = 65;
+    labelHo.x = homeTextX;
+    labelHo.y = homeTextY;
 
     //label for Home Office Matric
     let labelHoMa = chart.createChild(am4core.Label);
     labelHoMa.text = this.segment[2].matric.toString().split('.')[0];
-    labelHoMa.fontSize = 20;
+    labelHoMa.fontSize = homeMatricfont;
     labelHoMa.align = "center";
     labelHoMa.isMeasured = false;
-    if(this.segment[2].matric.toString().split('.')[0].length ===3){
-      labelHoMa.x = 385;
-      labelHoMa.y = 85;
-    }else{
-      labelHoMa.x = 380;
-      labelHoMa.y = 85;
-    }
+    labelHoMa.x = homeMatricX;
+    labelHoMa.y = homeMatricY;
 
     let valueAxisX = chart.xAxes.push(new am4charts.ValueAxis());
     valueAxisX.renderer.ticks.template.disabled = true;
@@ -149,7 +288,7 @@ export class SegmentComponent implements OnInit {
     hoverState.properties.fillOpacity = 1;
     hoverState.properties.strokeOpacity = 1;
 
-    series.heatRules.push({ target: bullet, min: 50, max: 70, property: "radius" });
+    series.heatRules.push({ target: bullet, min: this.minHeatRule, max: this.maxHeatRule, property: "radius" });
 
     bullet.adapter.add("tooltipY", function (tooltipY, target) {
       return -target.radius;

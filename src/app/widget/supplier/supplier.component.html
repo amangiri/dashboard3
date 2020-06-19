@@ -1,15 +1,17 @@
 <h5 style="text-align: center;">{{matric}} By City</h5>
-<table class="table table-striped">
+<table class="table table-striped table-sm">
     <thead>
     <tr>
+      <th scope="col">SNo.</th>
       <th scope="col">City</th>
       <th scope="col">Metric</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let city of cityList">
+    <tr *ngFor="let city of cityList; let i=index">
+      <td>{{i+1}}</td>
       <td>{{city.name}}</td>
-      <td>{{city.value | number:'1.0-0'}}</td>
+      <td>{{city.value | number:'1.1-1'}}</td>
     </tr>
     </tbody>
   </table>

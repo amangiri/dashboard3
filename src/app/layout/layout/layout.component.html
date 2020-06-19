@@ -2,7 +2,7 @@
   <p style="font-size: 20px; color: white">Loading...</p>
 </ngx-spinner>
     <div class="row">
-        <div class="card col-md-2">
+        <div class="card col-md-2.5 scrollable" style="height: 600px;">
            <app-supplier *ngIf="cityList.length>0" [cityList]="cityList"></app-supplier>
         </div>
         <div class="card col-md-4">
@@ -21,7 +21,8 @@
             <app-category *ngIf="departmentCat.length>0" [departmentCat]="departmentCat"></app-category>
            </div>
         </div>
-        <div class="card col-md-2" style="height: 100%; border-width: 0ch;">
+        &nbsp;&nbsp;
+        <div class="card col-md-1.5" style="height: 100%; border-width: 0ch;">
             <h5>Metric Selection</h5>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="discount" (change)="findBySegemnt(metric)" [(ngModel)]="metric" value="discount" checked>
@@ -56,7 +57,7 @@
               <div class="form-check">
                 <input class="form-check-input" type="radio" name="price" (change)="findBySegemnt(metric)" [(ngModel)]="metric" value="price">
                 <label class="form-check-label" for="price">
-                  Price
+                  Unit Price
                 </label>
               </div>
               <!-- <div class="form-check">
