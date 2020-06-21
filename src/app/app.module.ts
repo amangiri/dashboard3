@@ -17,6 +17,7 @@ import { StateComponent } from './widget/state/state.component';
 import { RegionComponent } from './widget/region/region.component';
 import { MonthComponent } from './widget/month/month.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DepartmentComponent } from './widget/department/department.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
     CategoryComponent,
     StateComponent,
     RegionComponent,
-    MonthComponent
+    MonthComponent,
+    DepartmentComponent
   ],
   imports: [
     BrowserModule,
