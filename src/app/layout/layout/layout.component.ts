@@ -14,12 +14,18 @@ export class LayoutComponent implements OnInit {
   departmentCat = [];
   cityList=[];
   metric = 'discount';
+  selMatric1="quantity";
+  selMatric2="discount";
+  // matric1Data;
+  // matric2Data;
+  monthData=[];
   constructor(
     private dashboardService: DashboardService,
     private spinner: NgxSpinnerService
   ) { }
 
   ngOnInit(): void {
+    this.getData();
     this.findBySegemnt(this.metric);
   }
 
@@ -56,6 +62,28 @@ export class LayoutComponent implements OnInit {
       // console.log(data)
       this.cityList=data;
     })
+  }
+
+  getMatric(matric,value){
+    matric==='Matric1'?this.selMatric1=value:this.selMatric2=value;
+    console.log(this.selMatric1,this.selMatric2)
+    this.getData();
+  }
+
+  getData(){
+    this.monthData=[]
+      this.dashboardService.getMatric1(this.selMatric1).subscribe((data:any)=>{
+          // console.log(data)
+          // this.matric1Data=data;
+          this.monthData.push({"matric1Data":data})
+      });
+      this.dashboardService.getMatric2(this.selMatric2).subscribe((data:any)=>{
+        // console.log(data)
+        // this.matric2Data=data;
+        this.monthData.push({"matric2Data":data})
+    });
+    
+
   }
 
   findMatric(matric) {

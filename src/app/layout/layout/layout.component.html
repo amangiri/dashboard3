@@ -18,6 +18,7 @@
             <app-region *ngIf="region.length>1" [region]="region"></app-region>
            </div>
            <div class="card row" style="height: 60%; width: 750px;">
+            <!-- <app-department *ngIf="departmentCat.length>0" [departmentCat]="departmentCat"></app-department> -->
             <app-category *ngIf="departmentCat.length>0" [departmentCat]="departmentCat"></app-category>
            </div>
         </div>
@@ -69,6 +70,40 @@
         </div>
     </div>
 
-    <div class="card row">
-      <app-month></app-month>
+    <div class="row">
+      <div class="col-md-10">
+        <app-month *ngIf="monthData.length>1" [monthData]="monthData"></app-month>
+      </div>
+      <div class="col-md-2">
+        <div class="row">
+          <div class="col">
+            <div ngbDropdown class="d-inline-block">
+              <label for="">Metric Selection 1</label>
+              <select class="custom-select" (change)="getMatric('Matric1',$event.target.value)">
+                <option value="quantity" selected>Order Quantity</option>
+                <option value="discount">Discount</option>
+                <option value="profit">Profit</option>
+                <option value="sales">Sales</option>
+                <option value="price">Unit Price</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col">
+            <div ngbDropdown class="d-inline-block">
+              <label for="">Metric Selection 2</label>
+              <select class="custom-select" (change)="getMatric('Matric2',$event.target.value)">
+                <option value="discount" selected>Discount</option>
+                <option value="quantity">Order Quantity</option>
+                <option value="profit">Profit</option>
+                <option value="sales">Sales</option>
+                <option value="price">Unit Price</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      
     </div>
