@@ -162,7 +162,7 @@ export class SegmentComponent implements OnInit {
       corporateTextX=70;
       corporateTextY=65;
       corporateMatricfont=17;
-      corporateMatricX=87;
+      corporateMatricX=82;
       corporateMatricY=82;
       consumerTextfont=17;
       consumerTextX=215;

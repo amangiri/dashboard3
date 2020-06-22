@@ -56,7 +56,7 @@ export class RegionComponent implements OnInit {
         pointFormat: '<span style="color:{point.color}">Matric</span>: <b>{point.y:,.2f}<br/>'
       },
       title: {
-        text: localStorage.getItem("matric")+' Discount by Region'
+        text: localStorage.getItem("matric")+' by Region'
       },
       subtitle: {
         // text: 'Region'
