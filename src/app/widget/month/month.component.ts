@@ -20,12 +20,12 @@ export class MonthComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        // this.spinner.show();
-        // setTimeout(() => {
-        //     this.spinner.hide();
-        // }, 2000);
         console.log(this.monthData)
-        this.chartData();
+        if(this.monthData){
+            console.log("month")
+            this.chartData();
+        }
+        
     }
 
 
@@ -39,7 +39,7 @@ export class MonthComponent implements OnInit {
                 zoomType: 'xy'
             },
             title: {
-                text: "Discount" + ' vs ' + "this.selMatric2" + ' by Month'
+                text: localStorage.getItem('matric1') + ' vs ' + localStorage.getItem('matric2')  + ' by Month'
             },
             subtitle: {
                 // text: 'Source: WorldClimate.com'
@@ -84,8 +84,10 @@ export class MonthComponent implements OnInit {
                 opposite: true
             }],
             tooltip: {
-                shared: true
-            },
+                shared:true,
+                // headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                // pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:,.2f}</b> of total<br/>'
+              },
             legend: {
                 enabled: false,
                 layout: 'horizontal',
@@ -104,7 +106,8 @@ export class MonthComponent implements OnInit {
                 yAxis: 1,
                 data: this.monthData[1].matric2Data.allYearData,
                 tooltip: {
-                    // valueSuffix: ' mm'
+                    // valueSuffix: ' mm',
+                    valueFormat:'{point.y:,.0f}'
                 }
 
             }, {

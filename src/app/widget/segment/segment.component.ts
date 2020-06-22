@@ -155,7 +155,7 @@ export class SegmentComponent implements OnInit {
       homeMatricX=390;
       homeMatricY=82;
     }
-    else if (localStorage.getItem('matric') === 'Price') {
+    else if (localStorage.getItem('matric') === 'Unit Price') {
       this.minHeatRule = 50;
       this.maxHeatRule = 75;
       corporateTextfont=17;
@@ -189,7 +189,7 @@ export class SegmentComponent implements OnInit {
     labelCr.y = corporateTextY;
     //label for Corporate Matric
     let labelCrMa = chart.createChild(am4core.Label);
-    labelCrMa.text = this.segment[1].matric.toString().split('.')[0];
+    labelCrMa.text = localStorage.getItem('matric') === 'Discount'?this.segment[1].matric.toString().split('.')[0]+'%':this.segment[1].matric.toString().split('.')[0];
     labelCrMa.fontSize = corporateMatricfont;
     labelCrMa.align = "center";
     labelCrMa.isMeasured = false;
@@ -207,7 +207,7 @@ export class SegmentComponent implements OnInit {
 
     //label for Consumer Matric
     let labelCnMa = chart.createChild(am4core.Label);
-    labelCnMa.text = this.segment[0].matric.toString().split('.')[0];
+    labelCnMa.text = localStorage.getItem('matric') === 'Discount'?this.segment[0].matric.toString().split('.')[0]+'%':this.segment[0].matric.toString().split('.')[0];
     labelCnMa.fontSize = consumerMatricfont;
     labelCnMa.align = "center";
     labelCnMa.isMeasured = false;
@@ -225,7 +225,7 @@ export class SegmentComponent implements OnInit {
 
     //label for Home Office Matric
     let labelHoMa = chart.createChild(am4core.Label);
-    labelHoMa.text = this.segment[2].matric.toString().split('.')[0];
+    labelHoMa.text = localStorage.getItem('matric') === 'Discount'?this.segment[2].matric.toString().split('.')[0]+'%':this.segment[2].matric.toString().split('.')[0];
     labelHoMa.fontSize = homeMatricfont;
     labelHoMa.align = "center";
     labelHoMa.isMeasured = false;

@@ -42,7 +42,7 @@ export class StateComponent implements OnInit {
     // console.log(chart.colors)
     //Set min/max fill color for each area
     // console.log(localStorage.getItem('matric'))
-    if(localStorage.getItem('matric')==='Sales' || localStorage.getItem('matric')==='Price'){
+    if(localStorage.getItem('matric')==='Sales' || localStorage.getItem('matric')==='Unit Price'){
       console.log("inside"+localStorage.getItem('matric'))
       polygonSeries.heatRules.push({
         property: "fill",

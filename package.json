@@ -28,6 +28,7 @@
     "bootstrap": "^4.5.0",
     "highcharts": "^8.1.1",
     "highcharts-angular": "^2.4.0",
+    "highcharts-grouped-categories": "^1.1.5",
     "jquery": "^3.5.1",
     "ngx-spinner": "^9.0.2",
     "popper.js": "^1.16.1",

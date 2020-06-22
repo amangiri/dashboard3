@@ -12,54 +12,54 @@ export class DashboardService {
   constructor(private http: HttpClient) { }
 
   findBySegment(metric): Observable<any> {
-    console.log(metric)
+    // console.log(metric)
     let url = environment.url + 'segmentStateRegion';
     let searchParams= new HttpParams();
     searchParams = searchParams.append('selection',metric)
-    console.log(url)
+    // console.log(url)
    return this.http.get<any>(url,{params:searchParams}).pipe(
       catchError(this.handleError)
     )
   }
 
   departmentCategory(metric): Observable<any> {
-    console.log(metric)
+    // console.log(metric)
     let url = environment.url + 'departmentCategory';
     let searchParams= new HttpParams();
     searchParams = searchParams.append('selection',metric)
-    console.log(url)
+    // console.log(url)
    return this.http.get<any>(url,{params:searchParams}).pipe(
       catchError(this.handleError)
     )
   }
 
   findByCustomers(metric): Observable<any> {
-    console.log(metric)
+    // console.log(metric)
     let url = environment.url + 'suppliers';
     let searchParams= new HttpParams();
     searchParams = searchParams.append('selection',metric)
-    console.log(url)
+    // console.log(url)
    return this.http.get<any>(url,{params:searchParams}).pipe(
       catchError(this.handleError)
     )
   }
 
   getMatric1(matric): Observable<any> {
-    console.log(matric)
+    // console.log(matric)
     let url = environment.url + 'matric1';
     let searchParams= new HttpParams();
     searchParams = searchParams.append('selection1',matric)
-    console.log(url)
+    // console.log(url)
    return this.http.get<any>(url,{params:searchParams}).pipe(
       catchError(this.handleError)
     )
   }
   getMatric2(matric): Observable<any> {
-    console.log(matric)
+    // console.log(matric)
     let url = environment.url + 'matric2';
     let searchParams= new HttpParams();
     searchParams = searchParams.append('selection2',matric)
-    console.log(url)
+    // console.log(url)
    return this.http.get<any>(url,{params:searchParams}).pipe(
       catchError(this.handleError)
     )
