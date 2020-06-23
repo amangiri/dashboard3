@@ -77,15 +77,20 @@ export class LayoutComponent implements OnInit {
       this.dashboardService.getMatric1(this.selMatric1).subscribe((data:any)=>{
           // console.log(data)
           // this.matric1Data=data;
-          this.monthData.push({"matric1Data":data})
+          this.monthData.push({"matric1Data":data});
+          this.getMatric2();
       });
-      this.dashboardService.getMatric2(this.selMatric2).subscribe((data:any)=>{
-        // console.log(data)
-        // this.matric2Data=data;
-        this.monthData.push({"matric2Data":data})
-    });
     
 
+  }
+
+
+  getMatric2(){
+    this.dashboardService.getMatric2(this.selMatric2).subscribe((data:any)=>{
+      // console.log(data)
+      // this.matric2Data=data;
+      this.monthData.push({"matric2Data":data})
+  });
   }
 
   findMatric(matric) {

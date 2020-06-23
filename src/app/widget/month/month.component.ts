@@ -1,8 +1,11 @@
 import { Component, OnInit, Input, Output, OnChanges, EventEmitter, SimpleChanges } from '@angular/core';
-import * as Highcharts from 'highcharts';
+// import * as Highcharts from 'highcharts';
 import HC_exporting from 'highcharts/modules/exporting';
 import { DashboardService } from 'src/app/dashboard.service';
 import { NgxSpinnerService } from "ngx-spinner";
+declare var require: any;
+var Highcharts = require('highcharts'), 
+    HighchartsGroupedCategories = require('highcharts-grouped-categories')(Highcharts);
 
 @Component({
     selector: 'app-month',
@@ -48,12 +51,35 @@ export class MonthComponent implements OnInit {
                 enabled: false
             },
             xAxis: [{
-                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                categories: 
+                // [
+                //     {
+                //         name:"2011",
+                //         categories:['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                //     },
+                //     {
+                //         name:"2012",
+                //         categories:['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                //     },
+                //     {
+                //         name:"2013",
+                //         categories:['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                //     },
+                //     {
+                //         name:"2014",
+                //         categories:['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                //     }
+                // ],
+                
+                ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
                     'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
                     'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
                     'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
                     'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-                crosshair: true
+                crosshair: true,
+                labels: {
+                    rotation: -90,
+                  }
             }],
             yAxis: [{ // Primary yAxis
                 labels: {

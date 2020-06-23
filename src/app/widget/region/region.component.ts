@@ -47,7 +47,7 @@ export class RegionComponent implements OnInit {
           // borderWidth: 0,
           dataLabels: {
             enabled: true,
-            format: '{point.y:.0f}'
+            format: localStorage.getItem("matric")==='Discount'?'{point.y:.0f}%':'{point.y:.0f}'
           }
         }
       },
