@@ -115,7 +115,7 @@ export class MonthComponent implements OnInit {
                 // pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:,.2f}</b> of total<br/>'
               },
             legend: {
-                enabled: false,
+                enabled: true,
                 layout: 'horizontal',
                 //   align: 'left',
                 //   x: 120,
