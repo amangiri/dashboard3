@@ -1,0 +1,109 @@
+<ngx-spinner [fullScreen]="true" bdColor="rgba(51,51,51,0.9)" size="medium" color="#fff" type="ball-clip-rotate">
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
+    <div class="row">
+        <div class="card col-md-2.5 scrollable" style="height: 600px;">
+           <app-supplier *ngIf="cityList.length>0" [cityList]="cityList"></app-supplier>
+        </div>
+        <div class="card col-md-4">
+           <div class="card row" style="height: 40%;">
+                <app-segment *ngIf="segment.length>0" [segment]="segment"></app-segment>
+           </div>
+           <div class="card row" style="height: 60%;">
+            <app-state *ngIf="state.length>0" [state]="state"></app-state>
+           </div>
+        </div>
+        <div class="card col-md-4">
+           <div class="card row" style="height: 40%;">
+            <app-region *ngIf="region.length>1" [region]="region"></app-region>
+           </div>
+           <div class="card row" style="height: 60%; width: 750px;">
+            <app-department *ngIf="departmentCat.length>0" [departmentCat]="departmentCat"></app-department>
+            <!-- <app-category *ngIf="departmentCat.length>0" [departmentCat]="departmentCat"></app-category> -->
+           </div>
+        </div>
+        &nbsp;&nbsp;
+        <div class="card col-md-1.5" style="height: 100%; border-width: 0ch;">
+            <h5>Metric Selection</h5>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="discount" (change)="findBySegemnt(metric)" [(ngModel)]="metric" value="discount" checked>
+                <label class="form-check-label" for="discount">
+                  Discount
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="order" (change)="findBySegemnt(metric)" [(ngModel)]="metric" value="quantity">
+                <label class="form-check-label" for="order">
+                  Order Quantity
+                </label>
+              </div>
+              <!-- <div class="form-check">
+                <input class="form-check-input" type="radio" name="margin" (change)="findBySegemnt(metric)" [(ngModel)]="metric" value="margin">
+                <label class="form-check-label" for="margin">
+                  Product Based Margin
+                </label>
+              </div> -->
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="profit" (change)="findBySegemnt(metric)" [(ngModel)]="metric" value="profit">
+                <label class="form-check-label" for="profit">
+                  Profit
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="sales" (change)="findBySegemnt(metric)"  [(ngModel)]="metric" value="sales">
+                <label class="form-check-label" for="sales">
+                  Sales
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="price" (change)="findBySegemnt(metric)" [(ngModel)]="metric" value="price">
+                <label class="form-check-label" for="price">
+                  Unit Price
+                </label>
+              </div>
+              <!-- <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" (change)="findBySegemnt(metric)" [(ngModel)]="metric" value="unit price">
+                <label class="form-check-label" for="exampleRadios2">
+                  Unit Price
+                </label>
+              </div> -->
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-10">
+        <app-month *ngIf="monthData.length>1" [monthData]="monthData"></app-month>
+      </div>
+      <div class="col-md-2">
+        <div class="row">
+          <div class="col">
+            <div ngbDropdown class="d-inline-block">
+              <label for="">Metric Selection 1</label>
+              <select class="custom-select" (change)="getMatric('Matric1',$event.target.value)">
+                <option value="quantity" selected>Order Quantity</option>
+                <option value="discount">Discount</option>
+                <option value="profit">Profit</option>
+                <option value="sales">Sales</option>
+                <option value="price">Unit Price</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col">
+            <div ngbDropdown class="d-inline-block">
+              <label for="">Metric Selection 2</label>
+              <select class="custom-select" (change)="getMatric('Matric2',$event.target.value)">
+                <option value="discount" selected>Discount</option>
+                <option value="quantity">Order Quantity</option>
+                <option value="profit">Profit</option>
+                <option value="sales">Sales</option>
+                <option value="price">Unit Price</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
