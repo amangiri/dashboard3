@@ -1,11 +1,6 @@
 import { Component, OnInit, Input, Output, OnChanges, EventEmitter, SimpleChanges } from '@angular/core';
-// import * as Highcharts from 'highcharts';
+import * as Highcharts from 'highcharts';
 import HC_exporting from 'highcharts/modules/exporting';
-import { DashboardService } from 'src/app/dashboard.service';
-import { NgxSpinnerService } from "ngx-spinner";
-declare var require: any;
-var Highcharts = require('highcharts'), 
-    HighchartsGroupedCategories = require('highcharts-grouped-categories')(Highcharts);
 
 @Component({
     selector: 'app-month',
@@ -16,11 +11,8 @@ export class MonthComponent implements OnInit {
     Highcharts = Highcharts;
     chartOptions: any = {};
     @Input() monthData;
-    @Input() subCategory;
-    constructor(
-        private dashboardService: DashboardService,
-        private spinner: NgxSpinnerService
-    ) { }
+
+    constructor() { }
 
     ngOnInit(): void {
         console.log(this.monthData)
@@ -52,33 +44,27 @@ export class MonthComponent implements OnInit {
             },
             xAxis: [{
                 categories: 
-                // [
-                //     {
-                //         name:"2011",
-                //         categories:['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-                //     },
-                //     {
-                //         name:"2012",
-                //         categories:['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-                //     },
-                //     {
-                //         name:"2013",
-                //         categories:['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-                //     },
-                //     {
-                //         name:"2014",
-                //         categories:['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-                //     }
-                // ],
-                
-                ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                [
+                    {
+                        name:"2014",
+                        categories:['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                    },
+                    {
+                        name:"2015",
+                        categories:['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                    },
+                    {
+                        name:"2016",
+                        categories:['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                    },
+                    {
+                        name:"2017",
+                        categories:['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                    }
+                ],
                 crosshair: true,
                 labels: {
-                    rotation: -90,
+                    rotation: -45,
                   }
             }],
             yAxis: [{ // Primary yAxis
@@ -93,7 +79,8 @@ export class MonthComponent implements OnInit {
                     style: {
                         color: Highcharts.getOptions().colors[1]
                     }
-                }
+                },
+                // min:localStorage.getItem('matric1')==='Profit'? -24000:false
             }, { // Secondary yAxis
                 title: {
                     text: 'Metric 2',
@@ -107,7 +94,8 @@ export class MonthComponent implements OnInit {
                         color: Highcharts.getOptions().colors[0]
                     }
                 },
-                opposite: true
+                opposite: true,
+                // min: localStorage.getItem('matric2')==='Profit'? -24000:false
             }],
             tooltip: {
                 shared:true,
@@ -119,7 +107,7 @@ export class MonthComponent implements OnInit {
                 layout: 'horizontal',
                 //   align: 'left',
                 //   x: 120,
-                //   verticalAlign: 'top',
+                  verticalAlign: 'top',
                 //   y: 100,
                 floating: false,
                 backgroundColor:
@@ -127,8 +115,16 @@ export class MonthComponent implements OnInit {
                     'rgba(255,255,255,0.25)'
             },
             series: [{
-                name: 'Metric 2',
+                name: 'Metric 1',
                 type: 'column',
+                // yAxis: 1,
+                data: this.monthData[0].matric1Data.allYearData,
+                tooltip: {
+                    // valueSuffix: '°C'
+                }
+            },{
+                name: 'Metric 2',
+                type: 'spline',
                 yAxis: 1,
                 data: this.monthData[1].matric2Data.allYearData,
                 tooltip: {
@@ -136,33 +132,10 @@ export class MonthComponent implements OnInit {
                     valueFormat:'{point.y:,.0f}'
                 }
 
-            }, {
-                name: 'Metric 1',
-                type: 'spline',
-                data: this.monthData[0].matric1Data.allYearData,
-                tooltip: {
-                    // valueSuffix: '°C'
-                }
             }]
         };
         HC_exporting(Highcharts);
-
-        setTimeout(() => {
-            window.dispatchEvent(
-                new Event('resize')
-            );
-        }, 300)
-
     }
 
-
-    //   ngOnChanges(changes: SimpleChanges) {
-    //     // console.log(changes)
-    //     this.profitData= changes.profitData.currentValue;
-    //     this.subCategory= changes.subCategory.currentValue;
-    //     if(changes.profitData.firstChange=true){
-    //     this.chartData();
-    //     }
-    //   }
 
 }
